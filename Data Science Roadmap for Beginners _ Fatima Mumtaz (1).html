@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data Science Roadmap for Beginners | Fatima Mumtaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050810;--panel:#0d1424;--ink:#eef3fc;--muted:#9aa7c4;--a:#4da3ff;--b:#b8f35c;--c:#ff9d4d;--line:#1b2641;
+box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px));color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.7 "IBM Plex Sans",system-ui,sans-serif;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.bar{position:fixed;top:0;left:0;right:0;z-index:10;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;background:rgba(5,8,16,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.bar b{font:700 .95rem Sora,sans-serif;white-space:nowrap}
+.track{flex:1;height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .5s}
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 20px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;margin:0;line-height:1.1}
+h1{font-size:clamp(2.6rem,11vw,5rem);font-weight:800;background:linear-gradient(100deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(1.7rem,6vw,2.4rem);margin-bottom:8px}
+h3{font-size:1.25rem}
+p{margin:12px 0;color:var(--muted);max-width:64ch}
+.sub{font-size:1.2rem;color:var(--ink);max-width:36ch;margin-top:16px}
+.by{display:inline-block;margin-top:6px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.95rem}
+.btn{display:inline-block;margin-top:24px;padding:13px 24px;border-radius:12px;font-weight:600;text-decoration:none;background:linear-gradient(100deg,var(--a),var(--b));color:#050810}
+a{color:var(--a)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+section{padding:60px 0 10px}
+.stage{position:relative;margin-top:22px;padding:22px 20px 22px 22px;background:linear-gradient(160deg,#131c33,var(--panel));border:1px solid var(--line);border-left:5px solid var(--a);border-radius:16px;transition:border-color .3s,box-shadow .3s}
+.stage.done{border-left-color:var(--b);box-shadow:0 0 30px -10px rgba(184,243,92,.5)}
+.num{font:800 .9rem Sora,sans-serif;color:var(--a)}
+.stage.done .num{color:var(--b)}
+.time{float:right;font-size:.85rem;color:var(--c);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chips span{padding:6px 12px;border-radius:999px;background:rgba(77,163,255,.12);border:1px solid rgba(77,163,255,.35);font-size:.92rem}
+.proj{margin:8px 0 12px;padding:10px 14px;border-radius:10px;background:rgba(255,157,77,.1);color:var(--ink);font-size:.98rem}
+.proj b{color:var(--c)}
+label{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:600}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--b)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+.card{padding:18px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}
+.card h3{font-size:1.05rem;margin-bottom:4px}
+.card p{margin:4px 0 0;font-size:.98rem}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+footer{padding:50px 0 80px;color:var(--muted)}
+.no-gl #gl{display:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="bar"><b id="pt">0 / 8 done</b><div class="track"><div class="fill" id="pf"></div></div></div>
+<main>
+<header class="hero">
+<h1>Data Science Roadmap</h1>
+<p class="sub">A clear 8-step path from zero to job-ready. Track your progress as you go.</p>
+<span class="by">By Fatima Mumtaz, Data Science student</span>
+<a class="btn" href="#steps" style="width:max-content">Start the roadmap</a>
+</header>
+
+<section id="steps">
+<h2 class="reveal">The 8 steps</h2>
+<p class="reveal">Tick each step when you finish it. Times are only suggestions and depend on how much you practise each day.</p>
+<div id="list"></div>
+</section>
+
+<section>
+<h2 class="reveal">Common mistakes</h2>
+<div class="grid">
+<div class="card reveal"><h3>Only watching tutorials</h3><p>Write code yourself after every lesson. Practice is where learning happens.</p></div>
+<div class="card reveal"><h3>Skipping the maths</h3><p>Basic statistics helps you understand why a model works, not only how to run it.</p></div>
+<div class="card reveal"><h3>Jumping to deep learning</h3><p>Master data cleaning and classic machine learning first. They are used far more often.</p></div>
+<div class="card reveal"><h3>No projects online</h3><p>Put your work on GitHub and write about it. Others cannot see what stays on your laptop.</p></div>
+</div>
+</section>
+
+<section>
+<h2 class="reveal">Free places to learn</h2>
+<div class="grid">
+<div class="card reveal"><h3><a href="https://www.kaggle.com/learn">Kaggle Learn</a></h3><p>Short hands-on courses on Python, pandas, SQL and machine learning.</p></div>
+<div class="card reveal"><h3><a href="https://colab.research.google.com/">Google Colab</a></h3><p>Run Python in your browser with no setup.</p></div>
+<div class="card reveal"><h3><a href="https://pandas.pydata.org/docs/">pandas docs</a></h3><p>The official guide for data analysis in Python.</p></div>
+<div class="card reveal"><h3><a href="https://scikit-learn.org/stable/">scikit-learn</a></h3><p>Official tutorials for classic machine learning.</p></div>
+</div>
+</section>
+
+<footer>Created by Fatima Mumtaz, Data Science student at Emerson University.<br><a href="https://www.linkedin.com/in/fatima-mumtaz-2113843b2">Connect with me on LinkedIn</a></footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var S=[
+["Python Basics","3 to 4 weeks",["Variables and data types","Loops and conditions","Functions","Lists and dictionaries","File handling"],"Student marks calculator"],
+["Maths and Statistics","4 weeks",["Mean, median, variance","Probability","Distributions","Correlation","Hypothesis testing","Linear algebra basics"],"Analyse your own class marks"],
+["Data Wrangling","3 to 4 weeks",["NumPy arrays","pandas DataFrames","Missing values","groupby and merge","Data cleaning"],"Clean and explore the Titanic dataset"],
+["Data Visualization","2 weeks",["Matplotlib","Seaborn","Choosing the right chart","Data storytelling"],"A chart dashboard for one dataset"],
+["SQL","2 to 3 weeks",["SELECT and WHERE","JOIN","GROUP BY","Subqueries"],"Answer 10 questions from a sample database"],
+["Machine Learning","6 to 8 weeks",["Regression","Classification","Train and test split","Overfitting","Evaluation metrics","scikit-learn"],"House price predictor"],
+["Deep Learning and AI","6+ weeks",["Neural networks","PyTorch or TensorFlow","Computer vision basics","NLP basics","Intro to LLMs"],"Image classifier"],
+["Projects and Career","Ongoing",["GitHub","Kaggle competitions","Portfolio website","LinkedIn posts","Explaining results simply"],"Publish 3 projects with clear READMEs"]
+];
+var done=[];try{done=JSON.parse(localStorage.getItem('dsr')||'[]')}catch(e){}
+var list=document.getElementById('list');
+S.forEach(function(s,i){
+ var d=document.createElement('div');d.className='stage reveal';
+ d.innerHTML='<span class="time">'+s[1]+'</span><div class="num">STEP '+(i+1)+'</div><h3>'+s[0]+'</h3><div class="chips">'+s[2].map(function(t){return'<span>'+t+'</span>'}).join('')+'</div><div class="proj"><b>Mini project:</b> '+s[3]+'</div><label><input type="checkbox" data-i="'+i+'"> Mark as done</label>';
+ list.appendChild(d)});
+function upd(){var c=0;document.querySelectorAll('.stage').forEach(function(el,i){var on=done.indexOf(i)>-1;el.classList.toggle('done',on);el.querySelector('input').checked=on;if(on)c++});
+ document.getElementById('pt').textContent=c+' / 8 done';document.getElementById('pf').style.width=(c/8*100)+'%'}
+list.addEventListener('change',function(e){var i=+e.target.dataset.i,k=done.indexOf(i);if(k>-1)done.splice(k,1);else done.push(i);try{localStorage.setItem('dsr',JSON.stringify(done))}catch(x){}upd()});
+upd();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+var cv=document.getElementById('gl'),R;
+try{R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){document.body.classList.add('no-gl');return}
+var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100),g=new THREE.Group();sc.add(g);
+function gauss(){return(Math.random()+Math.random()+Math.random()-1.5)}
+var C=[[-2.6,.8,0,0x4da3ff],[2.4,1.2,-1.2,0xb8f35c],[0,-2.2,1.6,0xff9d4d]];
+C.forEach(function(c){
+ var a=[];for(var i=0;i<130;i++)a.push(c[0]+gauss()*1.5,c[1]+gauss()*1.5,c[2]+gauss()*1.5);
+ var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(a,3));
+ g.add(new THREE.Points(geo,new THREE.PointsMaterial({color:c[3],size:.14,transparent:true,opacity:.9,blending:THREE.AdditiveBlending})));
+ var m=new THREE.Mesh(new THREE.IcosahedronGeometry(.34,1),new THREE.MeshBasicMaterial({color:c[3],wireframe:true}));m.position.set(c[0],c[1],c[2]);g.add(m);
+ var sh=new THREE.Mesh(new THREE.SphereGeometry(2.4,16,12),new THREE.MeshBasicMaterial({color:c[3],wireframe:true,transparent:true,opacity:.07}));sh.position.copy(m.position);g.add(sh)});
+var ax=[-5,0,0,5,0,0,0,-5,0,0,5,0,0,0,-5,0,0,5],ag=new THREE.BufferGeometry();ag.setAttribute('position',new THREE.Float32BufferAttribute(ax,3));
+g.add(new THREE.LineSegments(ag,new THREE.LineBasicMaterial({color:0x5b6b94,transparent:true,opacity:.5})));
+g.add(new THREE.GridHelper(12,12,0x22305a,0x151e3a));g.children[g.children.length-1].position.y=-4;
+var sa=[];for(var j=0;j<400;j++)sa.push((Math.random()-.5)*60,(Math.random()-.5)*60,(Math.random()-.5)*60);
+var sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(sa,3));
+var stars=new THREE.Points(sg,new THREE.PointsMaterial({color:0x8fa3d9,size:.07,transparent:true,opacity:.7}));sc.add(stars);
+function size(){var w=innerWidth,h=innerHeight;R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(w,h,false);cam.aspect=w/h;cam.position.set(0,1.5,w<650?15:10.5);cam.updateProjectionMatrix()}
+size();addEventListener('resize',size);
+var mx=0,my=0,sp=0;
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+addEventListener('scroll',function(){var m=document.documentElement.scrollHeight-innerHeight;sp=m>0?scrollY/m:0});
+var ry=0;
+function f(){
+ if(!reduce){ry+=.003;stars.rotation.y+=.0004}
+ g.rotation.y=ry+mx*.8+sp*2;g.rotation.x+=((my*.5+sp*.4)-g.rotation.x)*.05;
+ g.position.y=sp*2;
+ cam.lookAt(0,0,0);R.render(sc,cam);requestAnimationFrame(f)}
+f();
+})();
+</script>
+</body>
+</html>
